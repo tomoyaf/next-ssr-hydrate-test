@@ -8,6 +8,8 @@ export interface SimpleProps {
 
 const Simple: React.VFC<SimpleProps> = ({ deadline }) => {
   const isExpired = new Date() > new Date(deadline);
+  console.log("---------- Simple");
+  console.log(new Date(deadline));
   return (
     <div className="flex flex-col max-w-full py-6 justify-center items-start w-min">
       <A href={isExpired ? "good" : "bad"}>simple</A>

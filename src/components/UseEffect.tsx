@@ -9,6 +9,8 @@ export interface UseEffectProps {
 const UseEffect: React.VFC<UseEffectProps> = ({ deadline }) => {
   const [isExpired, setIsExpired] = React.useState<boolean>();
   React.useEffect(() => {
+    console.log("---------- useEffect");
+    console.log(new Date(deadline));
     setIsExpired(new Date() > new Date(deadline));
   }, [deadline]);
   return (
