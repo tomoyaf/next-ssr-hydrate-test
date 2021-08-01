@@ -12,9 +12,7 @@ const GoodComponent: React.VFC<GoodComponentProps> = ({ deadline }) => {
   );
   return (
     <div className="flex py-6">
-      <A href={isExpired ? "good" : "bad"} css="bg-blue-500 text-white">
-        good
-      </A>
+      <A href={isExpired ? "good" : "bad"}>good</A>
     </div>
   );
 };

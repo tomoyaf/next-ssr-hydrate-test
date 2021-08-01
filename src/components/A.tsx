@@ -14,7 +14,7 @@ const A: React.VFC<AProps> = (props) => {
   return (
     <a
       className={
-        "px-11 py-6 text-4xl shadow-xl rounded font-bold w-60 text-center " +
+        "px-11 py-6 text-4xl shadow-md rounded font-bold w-60 text-center border text-gray-900 " +
         (props.css ?? "")
       }
       {...props}

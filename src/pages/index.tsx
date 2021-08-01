@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
+import A from "components/A";
 import BadComponent from "components/BadComponent";
 import GoodComponent from "components/GoodComponent";
 
@@ -19,8 +20,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 const Home: React.VFC<HomeProps> = ({ deadline }) => (
   <div className="flex flex-col w-screen h-screen justify-center items-center">
-    <GoodComponent deadline={deadline} />
-    <BadComponent deadline={deadline} />
+    <div className="flex py-6">
+      <A href="good">good</A>
+    </div>
+    <div className="flex py-6">
+      <A href="bad">bad</A>
+    </div>
   </div>
 );
 
