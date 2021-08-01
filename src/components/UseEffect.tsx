@@ -12,9 +12,9 @@ const UseEffect: React.VFC<UseEffectProps> = ({ deadline }) => {
     setIsExpired(new Date() > new Date(deadline));
   }, [deadline]);
   return (
-    <div className="flex flex-col py-6 justify-center items-center px-10">
+    <div className="flex flex-col max-w-full py-6 justify-center items-start w-min">
       <A href={isExpired ? "good" : "bad"}>useEffect</A>
-      <div className="pt-6">
+      <div className="w-full pt-6 overflow-scroll">
         <SyntaxHighlighter language="javascript">
           {`const [isExpired, setIsExpired] = React.useState<boolean>();
 React.useEffect(() => {

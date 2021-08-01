@@ -12,9 +12,9 @@ const UseMemo: React.VFC<UseMemoProps> = ({ deadline }) => {
     [deadline]
   );
   return (
-    <div className="flex flex-col py-6 justify-center items-center px-10">
+    <div className="flex flex-col max-w-full w-min py-6 justify-center items-start">
       <A href={isExpired ? "good" : "bad"}>useMemo</A>
-      <div className="pt-6">
+      <div className="w-full pt-6 overflow-scroll">
         <SyntaxHighlighter language="javascript">
           {`const isExpired = React.useMemo(
   () => new Date() > new Date(deadline),
