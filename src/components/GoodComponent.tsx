@@ -6,10 +6,14 @@ export interface GoodComponentProps {
 }
 
 const GoodComponent: React.VFC<GoodComponentProps> = ({ deadline }) => {
-  const isExpired = React.useMemo(
-    () => new Date() > new Date(deadline),
-    [deadline]
-  );
+  // const isExpired = React.useMemo(
+  //   () => new Date() > new Date(deadline),
+  //   [deadline]
+  // );
+  const [isExpired, setIsExpired] = React.useState<boolean>();
+  React.useEffect(() => {
+    setIsExpired(new Date() > new Date(deadline));
+  }, [deadline]);
   console.log(new Date());
   console.log(new Date(deadline));
   console.log(new Date() > new Date(deadline));
