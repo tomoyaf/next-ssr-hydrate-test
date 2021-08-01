@@ -1,5 +1,7 @@
 import { GetServerSideProps } from "next";
 import React from "react";
+import BadComponent from "components/BadComponent";
+import GoodComponent from "components/GoodComponent";
 
 export interface HomeProps {
   deadline: string;
@@ -7,7 +9,7 @@ export interface HomeProps {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const { deadline } = process.env;
-  const defaultDeadline = "2021/08/01 15:10";
+  const defaultDeadline = "2021/01/01 00:00";
   return {
     props: {
       deadline: deadline == null ? defaultDeadline : deadline,
@@ -15,23 +17,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   };
 };
 
-const Home: React.VFC<HomeProps> = ({ deadline }) => {
-  const isExpired = React.useMemo(() => {
-    const now = new Date();
-    const deadlineDate = new Date(deadline);
-    console.log("-------- debugg ----------");
-    console.log(now);
-    console.log(deadlineDate);
-    console.log(now > deadlineDate);
-    return now > deadlineDate;
-  }, [deadline]);
-  return (
-    <div>
-      <a href={isExpired ? "https://google.com" : "https://youtube.com"}>
-        link
-      </a>
-    </div>
-  );
-};
+const Home: React.VFC<HomeProps> = ({ deadline }) => (
+  <div className="flex flex-col w-screen h-screen justify-center items-center">
+    <GoodComponent deadline={deadline} />
+    <BadComponent deadline={deadline} />
+  </div>
+);
 
 export default Home;
