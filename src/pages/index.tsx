@@ -1,8 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
 import A from "components/A";
-import BadComponent from "components/BadComponent";
-import GoodComponent from "components/GoodComponent";
 
 export interface HomeProps {
   deadline: string;

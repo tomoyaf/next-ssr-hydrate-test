@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import React from "react";
-import BadComponent from "components/BadComponent";
+import Simple from "components/Simple";
+import UseMemo from "components/UseMemo";
 
 export interface BadProps {
   deadline: string;
@@ -18,8 +19,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 const Bad: React.VFC<BadProps> = ({ deadline }) => {
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <BadComponent deadline={deadline} />
+    <div className="w-screen h-screen flex flex-col justify-center items-center">
+      <Simple deadline={deadline} />
+      <UseMemo deadline={deadline} />
     </div>
   );
 };
