@@ -16,7 +16,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 const Home: React.VFC<HomeProps> = ({ deadline }) => {
   const now = new Date();
-  const isExpired = now > new Date(deadline);
+  const deadlineDate = new Date(deadline);
+  const isExpired = now > deadlineDate;
+  console.log("-------- debugg ----------");
+  console.log(now);
+  console.log(deadlineDate);
+  console.log(now > deadlineDate);
   return (
     <div>
       <a href={isExpired ? "https://google.com" : "https://youtube.com"}>
