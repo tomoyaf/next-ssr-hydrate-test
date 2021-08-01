@@ -10,7 +10,6 @@ export interface AProps
 }
 
 const A: React.VFC<AProps> = (props) => {
-  console.log(props);
   return (
     <a
       className={

@@ -10,6 +10,9 @@ const GoodComponent: React.VFC<GoodComponentProps> = ({ deadline }) => {
     () => new Date() > new Date(deadline),
     [deadline]
   );
+  console.log(new Date());
+  console.log(new Date(deadline));
+  console.log(new Date() > new Date(deadline));
   return (
     <div className="flex py-6">
       <A href={isExpired ? "good" : "bad"}>good</A>

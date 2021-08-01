@@ -6,6 +6,9 @@ export interface BadComponentProps {
 }
 
 const BadComponent: React.VFC<BadComponentProps> = ({ deadline }) => {
+  console.log(new Date());
+  console.log(new Date(deadline));
+  console.log(new Date() > new Date(deadline));
   const isExpired = new Date() > new Date(deadline);
   return (
     <div className="flex py-6">
