@@ -9,6 +9,7 @@ export interface UseMemoProps {
 const UseMemo: React.VFC<UseMemoProps> = ({ deadline }) => {
   const isExpired = React.useMemo(() => {
     console.log("---------- useMemo");
+    console.log(new Date());
     console.log(new Date(deadline));
     return new Date() > new Date(deadline);
   }, [deadline]);
