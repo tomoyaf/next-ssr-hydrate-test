@@ -1,27 +1,31 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import A from "./A";
 
-export interface UseMemoProps {
-  deadline: string;
-}
-
-const UseMemo: React.VFC<UseMemoProps> = ({ deadline }) => {
-  const isExpired = React.useMemo(() => {
+const UseMemo: React.VFC = () => {
+  const now = React.useMemo(() => {
+    const now = new Date();
     console.log("---------- useMemo");
-    console.log(new Date());
-    console.log(new Date(deadline));
-    return new Date() > new Date(deadline);
-  }, [deadline]);
+    console.log(now);
+    return now;
+  }, []);
   return (
     <div className="flex flex-col max-w-full w-min py-6 justify-center items-start">
-      <A href={isExpired ? "good" : "bad"}>useMemo</A>
+      <h1 className="">Simple</h1>
+      <input
+        className="w-full"
+        defaultValue={
+          now &&
+          new Intl.DateTimeFormat("ja", {
+            dateStyle: "full",
+            timeStyle: "long",
+          }).format(now)
+        }
+      />
       <div className="w-full pt-6 overflow-scroll">
         <SyntaxHighlighter language="javascript">
-          {`const isExpired = React.useMemo(
-  () => new Date() > new Date(deadline),
-  [deadline]
-);`}
+          {`const now = React.useMemo(() => {
+  return new Date();
+}, []);`}
         </SyntaxHighlighter>
       </div>
     </div>

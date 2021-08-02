@@ -2,21 +2,28 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import A from "./A";
 
-export interface SimpleProps {
-  deadline: string;
-}
+export interface SimpleProps {}
 
-const Simple: React.VFC<SimpleProps> = ({ deadline }) => {
-  const isExpired = new Date() > new Date(deadline);
+const Simple: React.VFC<SimpleProps> = () => {
+  const now = new Date();
   console.log("---------- Simple");
-  console.log(new Date());
-  console.log(new Date(deadline));
+  console.log(now);
   return (
     <div className="flex flex-col max-w-full py-6 justify-center items-start w-min">
-      <A href={isExpired ? "good" : "bad"}>simple</A>
+      <h1 className="">Simple</h1>
+      <input
+        className="w-full"
+        defaultValue={
+          now &&
+          new Intl.DateTimeFormat("ja", {
+            dateStyle: "full",
+            timeStyle: "long",
+          }).format(now)
+        }
+      />
       <div className="w-full py-6 overflow-scroll">
         <SyntaxHighlighter language="javascript">
-          {`const isExpired = new Date() > new Date(deadline);`}
+          {`const now = new Date();`}
         </SyntaxHighlighter>
       </div>
     </div>

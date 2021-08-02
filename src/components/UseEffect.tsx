@@ -2,27 +2,33 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import A from "./A";
 
-export interface UseEffectProps {
-  deadline: string;
-}
-
-const UseEffect: React.VFC<UseEffectProps> = ({ deadline }) => {
-  const [isExpired, setIsExpired] = React.useState<boolean>();
+const UseEffect: React.VFC = () => {
+  const [now, setNow] = React.useState<Date>();
   React.useEffect(() => {
     console.log("---------- useEffect");
-    console.log(new Date());
-    console.log(new Date(deadline));
-    setIsExpired(new Date() > new Date(deadline));
-  }, [deadline]);
+    console.log(now);
+    setNow(new Date());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="flex flex-col max-w-full py-6 justify-center items-start w-min">
-      <A href={isExpired ? "good" : "bad"}>useEffect</A>
+      <h1 className="">useEffect</h1>
+      <input
+        className="w-full"
+        defaultValue={
+          now &&
+          new Intl.DateTimeFormat("ja", {
+            dateStyle: "full",
+            timeStyle: "long",
+          }).format(now)
+        }
+      />
       <div className="w-full pt-6 overflow-scroll">
         <SyntaxHighlighter language="javascript">
-          {`const [isExpired, setIsExpired] = React.useState<boolean>();
+          {`const [now, setNow] = React.useState<Date>();
 React.useEffect(() => {
-  setIsExpired(new Date() > new Date(deadline));
-}, [deadline]);`}
+  setNow(new Date());
+}, []);`}
         </SyntaxHighlighter>
       </div>
     </div>

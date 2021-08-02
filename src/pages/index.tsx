@@ -24,14 +24,14 @@ const Home: React.VFC<HomeProps> = ({ deadline }) => (
     <div className="flex flex-col py-12 px-10 max-w-full w-96">
       <h1 className="text-5xl text-gray-700 font-bold leading-10 py-6">Good</h1>
       <div className="w-full">
-        <UseEffect deadline={deadline} />
+        <UseEffect />
       </div>
     </div>
     <div className="flex flex-col py-12 px-10 max-w-full w-96">
       <h1 className="text-5xl text-gray-700 font-bold py-6">Bad</h1>
       <div className="w-full">
-        <Simple deadline={deadline} />
-        <UseMemo deadline={deadline} />
+        <Simple />
+        <UseMemo />
       </div>
     </div>
   </div>
