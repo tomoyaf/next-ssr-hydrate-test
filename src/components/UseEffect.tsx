@@ -5,9 +5,12 @@ import A from "./A";
 const UseEffect: React.VFC = () => {
   const [now, setNow] = React.useState<Date>();
   React.useEffect(() => {
-    console.log("---------- useEffect");
-    console.log(now);
-    setNow(new Date());
+    setNow(() => {
+      const now = new Date();
+      console.log("---------- useEffect");
+      console.log(now);
+      return now;
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
